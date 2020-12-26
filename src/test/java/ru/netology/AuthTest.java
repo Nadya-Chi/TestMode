@@ -10,8 +10,6 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class AuthTest {
 
-
-
     @BeforeEach
     void setUp() {
         open("http://localhost:9999");
@@ -33,5 +31,23 @@ public class AuthTest {
         $("[data-test-id='password'] input").setValue(registrationDto.getPassword());
         $("[data-test-id='action-login']").click();
         $("[data-test-id='error-notification'] [class='notification__content']").waitUntil(Condition.visible, 15000).shouldHave(exactText("Ошибка! Пользователь заблокирован"));
+    }
+
+    @Test
+    public void shouldNotSubmitRequestWithInvalidLogin() {
+        RegistrationDto registrationDto = Auth.invalidLogin();
+        $("[data-test-id='login'] input").setValue(registrationDto.getLogin());
+        $("[data-test-id='password'] input").setValue(registrationDto.getPassword());
+        $("[data-test-id='action-login']").click();
+        $("[data-test-id='error-notification'] [class='notification__content']").waitUntil(Condition.visible, 15000).shouldHave(exactText("Ошибка! Неверно указан логин или пароль"));
+    }
+
+    @Test
+    public void shouldNotSubmitRequestWithInvalidPassword() {
+        RegistrationDto registrationDto = Auth.invalidPassword();
+        $("[data-test-id='login'] input").setValue(registrationDto.getLogin());
+        $("[data-test-id='password'] input").setValue(registrationDto.getPassword());
+        $("[data-test-id='action-login']").click();
+        $("[data-test-id='error-notification'] [class='notification__content']").waitUntil(Condition.visible, 15000).shouldHave(exactText("Ошибка! Неверно указан логин или пароль"));
     }
 }
