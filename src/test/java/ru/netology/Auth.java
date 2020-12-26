@@ -43,4 +43,12 @@ public class Auth {
         return new RegistrationDto(login,password,"active");
     }
 
+    public static RegistrationDto statusBlocked() {
+        Faker faker = new Faker(new Locale("en"));
+        String login = faker.name().firstName();
+        String password = faker.internet().password();
+        setUpAll(new RegistrationDto(login,password,"blocked"));
+        return new RegistrationDto(login,password,"blocked");
+    }
+
 }
