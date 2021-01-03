@@ -30,7 +30,9 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(registrationDto.getLogin());
         $("[data-test-id='password'] input").setValue(registrationDto.getPassword());
         $("[data-test-id='action-login']").click();
-        $("[data-test-id='error-notification'] [class='notification__content']").waitUntil(Condition.visible, 15000).shouldHave(exactText("Ошибка! Пользователь заблокирован"));
+        $("[data-test-id='error-notification'] [class='notification__content']")
+                .waitUntil(Condition.visible, 15000)
+                .shouldHave(exactText("Ошибка! Пользователь заблокирован"));
     }
 
     @Test
@@ -39,7 +41,9 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(registrationDto.getLogin());
         $("[data-test-id='password'] input").setValue(registrationDto.getPassword());
         $("[data-test-id='action-login']").click();
-        $("[data-test-id='error-notification'] [class='notification__content']").waitUntil(Condition.visible, 15000).shouldHave(exactText("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] [class='notification__content']")
+                .waitUntil(Condition.visible, 15000)
+                .shouldHave(exactText("Ошибка! Неверно указан логин или пароль"));
     }
 
     @Test
@@ -48,6 +52,8 @@ public class AuthTest {
         $("[data-test-id='login'] input").setValue(registrationDto.getLogin());
         $("[data-test-id='password'] input").setValue(registrationDto.getPassword());
         $("[data-test-id='action-login']").click();
-        $("[data-test-id='error-notification'] [class='notification__content']").waitUntil(Condition.visible, 15000).shouldHave(exactText("Ошибка! Неверно указан логин или пароль"));
+        $("[data-test-id='error-notification'] [class='notification__content']")
+                .waitUntil(Condition.visible, 15000)
+                .shouldHave(exactText("Ошибка! Неверно указан логин или пароль"));
     }
 }

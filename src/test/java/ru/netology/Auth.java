@@ -5,14 +5,12 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;
 import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
-import lombok.Data;
 import org.junit.jupiter.api.BeforeAll;
 
 import java.util.Locale;
 
 import static io.restassured.RestAssured.given;
 
-@Data
 public class Auth {
     private static RequestSpecification requestSpec = new RequestSpecBuilder()
             .setBaseUri("http://localhost")
